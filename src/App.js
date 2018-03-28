@@ -31,6 +31,9 @@ const styles = theme => ({
     position: 'fixed',
     width: `calc(100% - 320px)`,
   },
+  avatar: {
+    borderRadius: 5
+  },
   drawerPaper: {
     position: 'relative',
     height: '100%',
@@ -71,7 +74,7 @@ const styles = theme => ({
     left: 'auto',
     right: 0,
     bottom: 0,
-    width: `calc(100% - 320px)`,
+    width: `calc(100% - 360px)`,
     padding: theme.spacing.unit * 3,
   },
   messageInput: {
@@ -128,7 +131,7 @@ class App extends React.Component {
           <List className={classes.chatsList}>
             {chats.map((chat, index) => (
               <ListItem key={index} button>
-                <Avatar>{chat.title && chat.title[0]}</Avatar>
+                <Avatar className={classes.avatar}>{chat.title && chat.title[0]}</Avatar>
                 <ListItemText primary={chat.title}/>
               </ListItem>
             ))}
@@ -151,7 +154,7 @@ class App extends React.Component {
               const isMessageFromMe = message.sender === 'me';
 
               const userAvatar = (
-                <Avatar>
+                <Avatar className={classes.avatar}>
                   {message.sender[0]}
                 </Avatar>
               );
